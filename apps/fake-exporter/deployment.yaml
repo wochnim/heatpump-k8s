@@ -14,8 +14,8 @@ spec:
         app: fake-exporter
     spec:
       containers:
-        - name: nginx
-          image: nginx:1.25
+        - name: exporter
+          image: ghcr.io/wochnim/heatpump-exporter:latest
           ports:
-            - containerPort: 80
+            - containerPort: 9105
 
