@@ -9,4 +9,4 @@ spec:
     app: fake-exporter
   ports:
     - port: 80
-      targerPort: 80
+      targetPort: 80
