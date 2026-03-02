@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: heatpump-exporter
+  namespace: heatpump
+  labels:
+    app: heatpump-exporter
+spec:
+  type: ClusterIP
+  selector:
+    app: heatpump-exporter
+  ports:
+    - name: metrics
+      port: 9105
+      targerPort: 9105

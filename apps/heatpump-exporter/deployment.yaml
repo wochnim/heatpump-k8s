@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heatpump-exporter
+  namespace: heatpump
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heatpump-exporter
+  template:
+    metadata:
+      labels:
+        app: heatpump-exporter
+    spec:
+      containers:
+        - name: exporter
+          image: ghcr.io/wochnim/heatpump-exporter:latest
+          ports:
+            - containerPort: 9105
+
