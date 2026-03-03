@@ -4,6 +4,7 @@ metadata:
   name: heatpump-data
   namespace: heatpump
 spec:
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
