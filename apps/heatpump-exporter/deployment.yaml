@@ -13,9 +13,16 @@ spec:
       labels:
         app: heatpump-exporter
     spec:
+      volumes:
+        - name: heatpump-data
+          persistentVolumeClaim:
+            claimName: heatpump-data
       containers:
         - name: exporter
           image: ghcr.io/wochnim/heatpump-exporter:latest
           ports:
             - containerPort: 9105
+          volumeMounts:
+            - name: heatpump-data
+              mountPath: /data
 
