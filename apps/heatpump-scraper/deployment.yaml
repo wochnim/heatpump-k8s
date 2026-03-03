@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heatpump-scraper
+  namespace: heatpump
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heatpump-scraper
+  template:
+    metadata:
+      labels:
+        app: heatpump-scraper
+    spec:
+      volumes:
+        - name: heatpump-data
+          persistentVolumeClaim:
+            claimName: heatpump-data
+
+      containers:
+
+        - name: appium
+          image: appium/appium:latest
+          ports:
+            - containerPort: 4723
+
+        - name: scraper
+          image: ghcr.io/wochnim/heatpump-scraper:latest
+          volumeMounts:
+            - name: heatpump-data
+              mountPath: /data

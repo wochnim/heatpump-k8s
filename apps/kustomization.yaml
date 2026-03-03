@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - fake-exporter
   - heatpump-exporter
+  - heatpump-scraper
