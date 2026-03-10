@@ -30,3 +30,6 @@ spec:
           volumeMounts:
             - name: heatpump-data
               mountPath: /data
+          env:
+            - name: ANDROID_SDK_HOME
+              value: /data
