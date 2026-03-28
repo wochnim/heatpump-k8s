@@ -33,3 +33,15 @@ spec:
           env:
             - name: ANDROID_SDK_HOME
               value: /data
+
+          livenessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - |
+                  test -f /data/heatpump_data_latest.txt && \
+                  test $(($(data +%s) - $(stat -c %Y /data/heatpump_data_latest.txt))) -lt 700
+            initialDelaySeconds: 700
+            periodSeconds: 700
+            failureThreshold: 2
